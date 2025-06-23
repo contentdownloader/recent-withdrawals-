@@ -5,14 +5,10 @@ const indianNames = [
   "Amit", "Sanjay", "Neha", "Kiran", "Rohit", "Sneha", "Manoj", "Anjali",
   "Vikram", "Pushpa", "Omprakash", "Nehal", "Pramod", "Parth", "Lakshmi",
   "Shubham", "Pooja", "Harshit", "Deepika", "Rajeev", "Arjun", "Meena",
-  "Kavita", "Suraj", "Bhavna", "Nikhil", "Divya", "Gaurav", "Tanya", "Yogesh",
-  // Added names below:
-  "Rahul", "Priya", "Vivek", "Shweta", "Ravi", "Sarita", "Ajay", "Ritika",
-  "Akash", "Simran", "Alok", "Nisha", "Ashish", "Jaya", "Kartik", "Preeti",
-  "Varun", "Smita", "Umesh", "Monica", "Ganesh", "Jyoti", "Dinesh", "Sonia",
-  "Siddharth", "Geeta", "Mahesh", "Rina", "Kapil", "Seema"
+  "Kavita", "Suraj", "Bhavna", "Nikhil", "Divya", "Gaurav", "Tanya", "Yogesh"
 ];
 
+// Mask names for privacy
 const maskName = (name) => {
   if (name.length <= 2) return name[0] + '*'.repeat(name.length - 1);
   const first = name.slice(0, 2);
@@ -21,10 +17,26 @@ const maskName = (name) => {
   return first + masked + last;
 };
 
+// Get a random amount
 const getRandomAmount = () => {
   return Math.floor(Math.random() * 200000 + 20000);
 };
 
+// Format current date/time in India Standard Time
+const getIndiaDateTime = () => {
+  return new Date().toLocaleString('en-IN', {
+    timeZone: 'Asia/Kolkata',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric',
+    hour12: true,
+  });
+};
+
+// Animate amount scrolling up
 const AnimatedAmount = ({ amount }) => {
   const [displayAmount, setDisplayAmount] = useState(0);
 
@@ -50,6 +62,7 @@ const AnimatedAmount = ({ amount }) => {
   return <div className="amount">₹{displayAmount.toLocaleString('en-IN')}</div>;
 };
 
+// Main component
 const ApprovedWithdrawals = () => {
   const [withdrawals, setWithdrawals] = useState([]);
 
@@ -58,9 +71,10 @@ const ApprovedWithdrawals = () => {
     const newEntries = Array.from({ length: count }, () => {
       const name = indianNames[Math.floor(Math.random() * indianNames.length)];
       return {
+        id: crypto.randomUUID(),
         name: maskName(name),
         amount: getRandomAmount(),
-        id: crypto.randomUUID()
+        timestamp: getIndiaDateTime()
       };
     });
     setWithdrawals(newEntries);
@@ -80,6 +94,7 @@ const ApprovedWithdrawals = () => {
           <strong>{entry.name}</strong>
           <div>Approved Withdrawal:</div>
           <AnimatedAmount amount={entry.amount} />
+          <div className="timestamp">{entry.timestamp}</div>
         </div>
       ))}
     </div>
