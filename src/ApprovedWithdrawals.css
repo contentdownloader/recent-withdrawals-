@@ -1,9 +1,9 @@
 body {
   margin: 0;
   padding: 0;
-  background: #fff;
-  color: #000;
-  font-family: Arial, sans-serif;
+  background-color: #0b0f0d; /* Dark forest green */
+  color: #f1f1f1;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
 .withdrawals {
@@ -11,21 +11,29 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 30px;
-  padding: 20px;
+  padding: 50px 20px;
   min-height: 100vh;
-  justify-content: center;
+  justify-content: flex-start;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  color: #e5c07b; /* Gold tone */
+  margin-bottom: 30px;
+  text-align: center;
 }
 
 .withdrawal {
-  background: #f9f9f9;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.05);
-  text-align: center;
+  background: #102118; /* Deep dark green card */
+  border-radius: 12px;
+  padding: 26px;
   width: 100%;
-  max-width: 400px;
-  opacity: 0; /* start hidden for animation */
-  transform: translateY(20px); /* start slightly below */
+  max-width: 420px;
+  box-shadow: 0 8px 20px rgba(255, 215, 0, 0.08); /* soft golden glow */
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
 }
 
 .animate-entry {
@@ -40,14 +48,16 @@ body {
 }
 
 .withdrawal strong {
-  font-size: 18px;
+  font-size: 20px;
+  color: #ffffff;
   display: block;
   margin-bottom: 6px;
 }
 
 .withdrawal .amount {
-  color: green;
-  font-weight: bold;
-  font-size: 22px;
-  margin-top: 5px;
+  color: #c6f6d5; /* Pale mint green */
+  font-weight: 700;
+  font-size: 26px;
+  margin-top: 6px;
+  transition: all 0.3s ease;
 }
