@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: approved-withdrawals-app
+    env: static
+    buildCommand: npm install && npm run build
+    staticPublishPath: build
+    branch: main  # change if you're using a different branch (e.g. "master")
