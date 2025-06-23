@@ -61,3 +61,10 @@ body {
   margin-top: 6px;
   transition: all 0.3s ease;
 }
+
+.timestamp {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #b2b2b2;
+  font-style: italic;
+}
