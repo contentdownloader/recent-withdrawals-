@@ -1,0 +1,24 @@
+# The name of your Worker project
+name = "bit-digital-mining"
+
+# Type can be "javascript", "webpack", "rust", or "modules"
+type = "javascript"
+
+# Your Cloudflare account ID (get it from https://dash.cloudflare.com/profile)
+account_id = "your-account-id"
+
+# The date to lock your Worker to the Cloudflare runtime behavior
+compatibility_date = "2025-07-02"
+
+# Whether to deploy to your *.workers.dev subdomain
+workers_dev = true
+
+# Uncomment this section if deploying to a custom domain
+# routes = ["https://yourdomain.com/*"]
+# zone_id = "your-zone-id"
+
+# Environment-specific settings (optional)
+[env.production]
+name = "bit-digital-mining-prod"
+# routes = ["https://bitdigitalmining.com/*"]
+# zone_id = "your-zone-id"
